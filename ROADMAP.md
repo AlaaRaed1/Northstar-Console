@@ -8,6 +8,8 @@ This roadmap is a living execution checklist. Every future chat should update th
 - Prefer one PR per phase or sub-slice
 - Keep checklist items honest
 - When a slice is completed, mark it done and add a dated note in the progress log
+- Do not start the next branch until the current branch is reviewed and merged into `main`
+- Always branch from the latest `main`
 
 ## Branch And PR Strategy
 
@@ -25,6 +27,7 @@ Recommended PR style:
 - Small enough to review in one sitting
 - Each PR should produce a visible product improvement
 - Each PR should include roadmap updates
+- Avoid stacked local branches unless explicitly requested
 
 ## Milestone 0: Repository Foundation
 
@@ -315,4 +318,3 @@ Checklist:
 ## Progress Log
 
 - [2026-05-08] Repository foundation is in place with app shell, blue theme, dashboard starter UI, Prisma 7 starter schema, credentials auth scaffold, and core product docs.
-

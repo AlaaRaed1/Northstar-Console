@@ -49,9 +49,11 @@ Every future chat should follow this workflow:
 1. Read `PROJECT_GUIDE.md` and `ROADMAP.md`.
 2. Identify the next appropriate milestone or checklist slice.
 3. Keep work scoped to one realistic feature slice.
-4. Update `ROADMAP.md` when statuses change.
-5. If product or architectural direction changes, update `PROJECT_GUIDE.md`.
-6. Keep commits and PRs believable, focused, and reviewable.
+4. Do not start the next branch until the current branch has been reviewed and merged into `main`.
+5. Always create the next branch from the latest `main`, not from an older feature branch.
+6. Update `ROADMAP.md` when statuses change.
+7. If product or architectural direction changes, update `PROJECT_GUIDE.md`.
+8. Keep commits and PRs believable, focused, and reviewable.
 
 ## Branch Naming Rules
 
@@ -79,6 +81,8 @@ Rules:
 - Prefer multiple small, real commits over one giant dump
 - Each commit should represent a coherent step
 - Each branch should map to one feature slice or tightly related slice
+- Only one active feature or chore branch should be advanced at a time
+- Do not branch from unmerged work unless the user explicitly asks for stacked branches
 - Each PR should be understandable in one review sitting
 - Update roadmap checklists in the same branch as the feature work
 - Avoid mixing unrelated features in one PR
