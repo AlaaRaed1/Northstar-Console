@@ -1,0 +1,62 @@
+{
+  "name": "northstar-console",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "format": "prettier --write .",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.2.2",
+    "@ant-design/nextjs-registry": "^1.3.0",
+    "@auth/prisma-adapter": "^2.11.2",
+    "@hookform/resolvers": "^5.2.2",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "@tanstack/react-query": "^5.100.7",
+    "antd": "^6.3.7",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.20",
+    "lucide-react": "^1.14.0",
+    "next": "16.2.4",
+    "next-auth": "^4.24.14",
+    "pg": "^8.16.3",
+    "prisma": "^7.8.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.74.0",
+    "zod": "^4.4.1",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/coverage-v8": "^4.1.5",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.3",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}
