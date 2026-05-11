@@ -63,12 +63,25 @@ Use this branch schema exactly:
 - `fix/{short-fix-desc}`
 - `chore/{chore-desc}`
 
+Branch names must be concise, human-looking, and easy to scan in GitHub.
+
+Rules:
+
+- Prefer 2 to 4 words after the slash
+- Avoid long descriptive chains
+- Avoid stuffing the full task description into the branch name
+- Prefer domain words over implementation details
+- If two names would work, choose the shorter one
+
 Examples:
 
-- `feat/auth-local-db-setup`
-- `feat/requests-list-page`
-- `fix/sign-in-redirect-loop`
-- `chore/add-project-docs`
+- `feat/auth-setup`
+- `feat/requests-list`
+- `feat/assets-table`
+- `fix/sign-in-loop`
+- `fix/antd-warnings`
+- `fix/ui-polish`
+- `chore/project-docs`
 
 Do not use the default `codex/*` branch naming pattern in this repository unless the user explicitly asks for it.
 

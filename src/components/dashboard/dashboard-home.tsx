@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   Col,
-  List,
   Progress,
   Row,
   Space,
@@ -87,7 +86,7 @@ const activities = [
 export function DashboardHome() {
   return (
     <AppShell>
-      <Space direction="vertical" size={24} className="dashboard-stack">
+      <Space orientation="vertical" size={24} className="dashboard-stack">
         <section className="hero-panel">
           <div className="hero-panel__copy">
             <Tag color="green">Live operations</Tag>
@@ -106,7 +105,7 @@ export function DashboardHome() {
             </Space>
           </div>
 
-          <Card className="hero-panel__aside" bordered={false}>
+          <Card className="hero-panel__aside" variant="borderless">
             <Typography.Text className="section-kicker">Operational health</Typography.Text>
             <div className="hero-panel__metric">
               <span>Approval throughput</span>
@@ -123,22 +122,22 @@ export function DashboardHome() {
 
         <Row gutter={[20, 20]}>
           <Col xs={24} md={12} xl={6}>
-            <Card bordered={false}>
+            <Card variant="borderless">
               <Statistic title="Open requests" value={38} suffix="/ 52" />
             </Card>
           </Col>
           <Col xs={24} md={12} xl={6}>
-            <Card bordered={false}>
+            <Card variant="borderless">
               <Statistic title="Approvals today" value={14} />
             </Card>
           </Col>
           <Col xs={24} md={12} xl={6}>
-            <Card bordered={false}>
+            <Card variant="borderless">
               <Statistic title="Assets below threshold" value={7} />
             </Card>
           </Col>
           <Col xs={24} md={12} xl={6}>
-            <Card bordered={false}>
+            <Card variant="borderless">
               <Statistic title="Audit events" value={126} />
             </Card>
           </Col>
@@ -147,7 +146,7 @@ export function DashboardHome() {
         <Row gutter={[20, 20]}>
           <Col xs={24} xl={16}>
             <Card
-              bordered={false}
+              variant="borderless"
               title="Requests inbox"
               extra={
                 <Space>
@@ -166,20 +165,20 @@ export function DashboardHome() {
           </Col>
 
           <Col xs={24} xl={8}>
-            <Space direction="vertical" size={20} className="dashboard-stack">
-              <Card bordered={false} title="Attention needed">
+            <Space orientation="vertical" size={20} className="dashboard-stack">
+              <Card variant="borderless" title="Attention needed">
                 <Alert
                   type="warning"
                   showIcon
-                  message="7 assets fell below the reorder threshold in the last sync."
+                  title="7 assets fell below the reorder threshold in the last sync."
                   description="The Assets module is ready for threshold rules and batch restock actions next."
                 />
               </Card>
 
-              <Card bordered={false} title="Recent activity">
+              <Card variant="borderless" title="Recent activity">
                 <Timeline
                   items={activities.map((item) => ({
-                    children: item,
+                    content: item,
                   }))}
                 />
               </Card>
@@ -189,28 +188,34 @@ export function DashboardHome() {
 
         <Row gutter={[20, 20]}>
           <Col xs={24} xl={10}>
-            <Card bordered={false} title="Today">
-              <List
-                dataSource={[
+            <Card variant="borderless" title="Today">
+              <div className="info-list">
+                {[
                   "4 requests waiting on finance review",
                   "2 transfer mismatches flagged by warehouse sync",
                   "1 access change pending admin approval",
-                ]}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-              />
+                ].map((item) => (
+                  <div key={item} className="info-list__item">
+                    {item}
+                  </div>
+                ))}
+              </div>
             </Card>
           </Col>
 
           <Col xs={24} xl={14}>
-            <Card bordered={false} title="Build notes">
-              <List
-                dataSource={[
+            <Card variant="borderless" title="Build notes">
+              <div className="info-list">
+                {[
                   "App shell, theme tokens, and table density are live.",
                   "Prisma schema includes workspaces, memberships, requests, assets, and audit logs.",
                   "Simple credentials auth is scaffolded for the next backend step.",
-                ]}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-              />
+                ].map((item) => (
+                  <div key={item} className="info-list__item">
+                    {item}
+                  </div>
+                ))}
+              </div>
             </Card>
           </Col>
         </Row>
