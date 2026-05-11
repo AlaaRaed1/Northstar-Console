@@ -10,7 +10,7 @@ import {
   SettingOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
-import { Avatar, Badge, Button, Input, Layout, Menu, Space, Tag, Typography } from "antd";
+import { Avatar, Badge, Button, Input, Layout, Menu, Tag, Typography } from "antd";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -38,7 +38,7 @@ export function AppShell({ children }: AppShellProps) {
     <Layout className="app-shell">
       <Sider
         breakpoint="lg"
-        collapsedWidth={88}
+        collapsedWidth={96}
         collapsible
         collapsed={collapsed}
         onCollapse={setCollapsed}
@@ -46,7 +46,7 @@ export function AppShell({ children }: AppShellProps) {
         width={292}
         className="app-shell__sider"
       >
-        <div className="app-shell__brand">
+        <div className={`app-shell__brand ${collapsed ? "app-shell__brand--collapsed" : ""}`}>
           <div className="app-shell__brand-mark">N</div>
           {!collapsed ? (
             <div>
@@ -58,16 +58,20 @@ export function AppShell({ children }: AppShellProps) {
           ) : null}
         </div>
 
-        <div className="app-shell__workspace">
-          <Typography.Text className="app-shell__workspace-label">Workspace</Typography.Text>
-          <div className="app-shell__workspace-card">
-            <div>
-              <Typography.Text className="app-shell__workspace-name">Northstar HQ</Typography.Text>
-              <Typography.Text className="app-shell__workspace-meta">Amman · 24 live users</Typography.Text>
+        {!collapsed ? (
+          <div className="app-shell__workspace">
+            <Typography.Text className="app-shell__workspace-label">Workspace</Typography.Text>
+            <div className="app-shell__workspace-card">
+              <div>
+                <Typography.Text className="app-shell__workspace-name">Northstar HQ</Typography.Text>
+                <Typography.Text className="app-shell__workspace-meta">
+                  Amman · 24 live users
+                </Typography.Text>
+              </div>
+              <Tag color="green">Healthy</Tag>
             </div>
-            {!collapsed ? <Tag color="green">Healthy</Tag> : null}
           </div>
-        </div>
+        ) : null}
 
         <Menu
           theme="dark"
@@ -78,7 +82,7 @@ export function AppShell({ children }: AppShellProps) {
         />
 
         <div className="app-shell__menu-section">
-          <Typography.Text className="app-shell__workspace-label">System</Typography.Text>
+          {!collapsed ? <Typography.Text className="app-shell__workspace-label">System</Typography.Text> : null}
           <Menu
             theme="dark"
             mode="inline"
@@ -91,7 +95,7 @@ export function AppShell({ children }: AppShellProps) {
 
       <Layout className="app-shell__main">
         <Header className="app-shell__header">
-          <Space size={14}>
+          <div className="app-shell__header-main">
             <Button
               type="text"
               className="app-shell__icon-button"
@@ -103,9 +107,9 @@ export function AppShell({ children }: AppShellProps) {
               prefix={<SearchOutlined />}
               placeholder="Search requests, assets, users"
             />
-          </Space>
+          </div>
 
-          <Space size={12}>
+          <div className="app-shell__header-actions">
             <Badge dot>
               <Button type="text" className="app-shell__icon-button" icon={<BellOutlined />} />
             </Badge>
@@ -116,7 +120,7 @@ export function AppShell({ children }: AppShellProps) {
                 <Typography.Text className="app-shell__profile-role">Owner</Typography.Text>
               </div>
             </div>
-          </Space>
+          </div>
         </Header>
 
         <Content className="app-shell__content">{children}</Content>

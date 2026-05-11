@@ -15,12 +15,16 @@ This roadmap is a living execution checklist. Every future chat should update th
 
 Recommended branch prefix:
 
-- `codex/foundation-*`
-- `codex/auth-*`
-- `codex/requests-*`
-- `codex/assets-*`
-- `codex/settings-*`
-- `codex/deploy-*`
+- `feat/*`
+- `fix/*`
+- `chore/*`
+
+Branch naming guidance:
+
+- Keep names short and readable
+- Prefer 2 to 4 words after the slash
+- Use product language, not full ticket summaries
+- Examples: `feat/auth-setup`, `feat/requests-list`, `fix/antd-warnings`, `chore/project-docs`
 
 Recommended PR style:
 

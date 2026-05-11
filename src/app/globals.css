@@ -1,4 +1,5 @@
 :root {
+  --window-gap: 30px;
   --page-bg: #eef4ff;
   --page-ink: #10233f;
   --page-muted: #5d6b82;
@@ -54,7 +55,7 @@ a {
 }
 
 .app-shell__sider.ant-layout-sider {
-  margin: 18px 0 18px 18px;
+  margin: var(--window-gap) 0 var(--window-gap) var(--window-gap);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 30px;
   overflow: hidden;
@@ -66,6 +67,11 @@ a {
   align-items: center;
   gap: 14px;
   padding: 24px 20px 18px;
+}
+
+.app-shell__brand--collapsed {
+  justify-content: center;
+  padding-inline: 12px;
 }
 
 .app-shell__brand-mark {
@@ -90,18 +96,22 @@ a {
   display: block;
 }
 
-.app-shell__brand-title {
-  color: #f7f4ee;
+.app-shell__brand-title.ant-typography {
+  color: #f8fbff;
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0;
 }
 
-.app-shell__brand-subtitle,
-.app-shell__workspace-label,
-.app-shell__workspace-meta,
-.app-shell__profile-role {
-  color: rgba(247, 244, 238, 0.64);
+.app-shell__brand-subtitle.ant-typography,
+.app-shell__workspace-label.ant-typography,
+.app-shell__workspace-meta.ant-typography,
+.app-shell__profile-role.ant-typography {
+  color: rgba(247, 244, 238, 0.82);
   font-size: 0.82rem;
+  line-height: 1.35;
+  margin-bottom: 0;
 }
 
 .app-shell__workspace {
@@ -120,9 +130,10 @@ a {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.app-shell__workspace-name {
-  color: #f7f4ee;
+.app-shell__workspace-name.ant-typography {
+  color: #f8fbff;
   font-weight: 700;
+  margin-bottom: 0;
 }
 
 .app-shell__menu {
@@ -131,22 +142,59 @@ a {
   border-inline-end: 0;
 }
 
+.app-shell__menu.ant-menu-inline .ant-menu-item,
+.app-shell__menu.ant-menu-inline .ant-menu-submenu-title {
+  padding-inline-start: 44px !important;
+  padding-inline-end: 16px !important;
+}
+
 .app-shell__menu-section {
   padding-top: 14px;
+}
+
+.app-shell__menu-section .app-shell__workspace-label,
+.app-shell__workspace > .app-shell__workspace-label {
+  padding-inline: 36px;
+  color: rgba(247, 244, 238, 0.56);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.app-shell__profile-name.ant-typography {
+  color: var(--page-ink);
+  font-weight: 700;
+  margin-bottom: 0;
 }
 
 .app-shell__main {
   background: transparent;
 }
 
-.app-shell__header {
+.app-shell__header.ant-layout-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   height: auto;
-  padding: 22px 24px 10px;
+  padding: var(--window-gap) var(--window-gap) 14px;
   line-height: 1;
+}
+
+.app-shell__header-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.app-shell__header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+  flex: 0 1 auto;
 }
 
 .app-shell__icon-button.ant-btn {
@@ -158,7 +206,8 @@ a {
 }
 
 .app-shell__search.ant-input-affix-wrapper {
-  width: min(440px, 58vw);
+  width: min(100%, 620px);
+  min-width: 0;
   border: 1px solid var(--panel-border);
   background: var(--panel-bg);
   backdrop-filter: blur(14px);
@@ -174,6 +223,9 @@ a {
   border-radius: 18px;
   background: var(--panel-bg);
   backdrop-filter: blur(14px);
+  min-width: 0;
+  max-width: min(280px, 24vw);
+  flex: 0 1 auto;
 }
 
 .app-shell__profile-name {
@@ -185,8 +237,19 @@ a {
   color: var(--page-muted);
 }
 
+.app-shell__profile-copy {
+  min-width: 0;
+}
+
+.app-shell__profile-name.ant-typography,
+.app-shell__profile-role.ant-typography {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .app-shell__content {
-  padding: 10px 24px 24px;
+  padding: 0 var(--window-gap) var(--window-gap);
 }
 
 .dashboard-stack {
@@ -196,6 +259,7 @@ a {
 .hero-panel {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.7fr);
+  align-items: start;
   gap: 20px;
 }
 
@@ -211,6 +275,7 @@ a {
 .hero-panel__copy {
   padding: 28px;
   border-radius: 28px;
+  min-height: 100%;
 }
 
 .hero-panel__aside.ant-card,
@@ -218,11 +283,15 @@ a {
   border-radius: 24px;
 }
 
+.hero-panel__aside.ant-card {
+  min-height: auto;
+}
+
 .hero-panel__title.ant-typography {
-  max-width: 12ch;
+  max-width: 11ch;
   margin-top: 16px;
   margin-bottom: 12px;
-  font-size: clamp(2.2rem, 2rem + 1.2vw, 3.6rem);
+  font-size: clamp(2rem, 1.7rem + 1.5vw, 3.35rem);
   line-height: 0.98;
   letter-spacing: 0;
 }
@@ -259,13 +328,29 @@ a {
   cursor: pointer;
 }
 
+.info-list {
+  display: grid;
+  gap: 12px;
+}
+
+.info-list__item {
+  padding: 14px 0;
+  color: var(--page-muted);
+  border-bottom: 1px solid rgba(16, 35, 63, 0.08);
+}
+
+.info-list__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
 .sign-in-page {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(340px, 440px);
   align-items: center;
   gap: 28px;
   min-height: 100vh;
-  padding: 32px;
+  padding: var(--window-gap);
 }
 
 .sign-in-page__hero {
@@ -319,7 +404,7 @@ a {
   }
 
   .sign-in-page {
-    padding: 24px 18px;
+    padding: 24px;
   }
 
   .sign-in-page__hero {
@@ -328,14 +413,21 @@ a {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --window-gap: 20px;
+  }
+
   .app-shell__sider.ant-layout-sider {
-    margin: 12px;
+    margin: var(--window-gap);
   }
 
   .app-shell__header {
     flex-direction: column;
     align-items: stretch;
-    padding-inline: 16px;
+  }
+
+  .app-shell__header-actions {
+    justify-content: space-between;
   }
 
   .app-shell__search.ant-input-affix-wrapper {
@@ -346,8 +438,12 @@ a {
     display: none;
   }
 
+  .app-shell__profile {
+    max-width: none;
+  }
+
   .app-shell__content {
-    padding-inline: 16px;
+    padding-inline: var(--window-gap);
   }
 
   .hero-panel__copy {
@@ -357,5 +453,40 @@ a {
   .hero-panel__title.ant-typography,
   .sign-in-page__title {
     max-width: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .app-shell__profile {
+    max-width: 220px;
+  }
+
+  .app-shell__profile-role {
+    display: none;
+  }
+}
+
+@media (max-width: 1120px) {
+  .app-shell__profile {
+    max-width: 160px;
+  }
+
+  .app-shell__profile-name.ant-typography {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .app-shell__header-actions {
+    gap: 10px;
+  }
+
+  .app-shell__profile {
+    max-width: 56px;
+    padding-right: 4px;
+  }
+
+  .app-shell__profile-copy {
+    display: none;
   }
 }

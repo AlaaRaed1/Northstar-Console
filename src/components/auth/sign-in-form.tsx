@@ -42,8 +42,8 @@ export function SignInForm({ callbackUrl }: SignInFormProps) {
   };
 
   return (
-    <Card className="sign-in-card" bordered={false}>
-      <Space direction="vertical" size={20} className="sign-in-card__stack">
+    <Card className="sign-in-card" variant="borderless">
+      <Space orientation="vertical" size={20} className="sign-in-card__stack">
         <div>
           <Typography.Text className="section-kicker">Credentials sign-in</Typography.Text>
           <Typography.Title level={2} className="sign-in-card__title">
@@ -55,7 +55,7 @@ export function SignInForm({ callbackUrl }: SignInFormProps) {
           </Typography.Paragraph>
         </div>
 
-        {errorMessage ? <Alert type="error" message={errorMessage} showIcon /> : null}
+        {errorMessage ? <Alert type="error" title={errorMessage} showIcon /> : null}
 
         <Form<SignInFields> layout="vertical" onFinish={handleSubmit} size="large">
           <Form.Item
